@@ -1,0 +1,656 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUAN Shaowei | AI for Healthcare</title>
+  <meta name="description" content="Personal research website of GUAN Shaowei (Frank), PhD student in AI for healthcare at The Hong Kong Polytechnic University.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f3f5f8;
+      --bg-elevated: #ffffff;
+      --ink: #0e1b2e;
+      --ink-soft: #4f5e74;
+      --line: #d6dde8;
+      --brand: #102a43;
+      --brand-soft: #2f4f6f;
+      --accent: #b28a57;
+      --accent-soft: #f3e7d7;
+      --shadow: 0 18px 40px rgba(8, 25, 46, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 8%, #e2e9f3 0%, rgba(226, 233, 243, 0) 30%),
+        radial-gradient(circle at 92% 18%, #f6ede1 0%, rgba(246, 237, 225, 0) 25%),
+        linear-gradient(170deg, #edf1f6 0%, #f8fafc 60%, #ecf1f7 100%);
+      line-height: 1.65;
+    }
+
+    .shell {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 20px 20px 60px;
+    }
+
+    .nav {
+      position: sticky;
+      top: 12px;
+      z-index: 12;
+      margin-bottom: 22px;
+      border: 1px solid rgba(16, 42, 67, 0.1);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 10px 24px rgba(16, 42, 67, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-wrap {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 12px 16px;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1.6rem;
+      color: var(--brand);
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .links a {
+      text-decoration: none;
+      color: var(--brand-soft);
+      padding: 7px 12px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: all 0.24s ease;
+    }
+
+    .links a:hover {
+      color: var(--brand);
+      border-color: #c8d5e3;
+      background: #f8fbff;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+      animation: rise 0.7s ease both;
+    }
+
+    .panel {
+      background: var(--bg-elevated);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .intro h1 {
+      margin: 0 0 8px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      color: var(--brand);
+    }
+
+    .intro .title {
+      margin: 0;
+      color: var(--brand-soft);
+      font-weight: 700;
+      letter-spacing: 0.01em;
+    }
+
+    .lead {
+      margin-top: 14px;
+      color: var(--ink-soft);
+      font-size: 1.04rem;
+      max-width: 64ch;
+    }
+
+    .tags {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #eff4fb;
+      color: #173a5c;
+      border: 1px solid #d3dfec;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .actions {
+      margin-top: 20px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, #0f2d4b, #264f77);
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(16, 42, 67, 0.26);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(16, 42, 67, 0.3);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--brand);
+      border-color: #bfd0e0;
+    }
+
+    .btn-secondary:hover {
+      background: #f7fafc;
+      border-color: #9db4ca;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      animation: rise 0.8s ease 0.1s both;
+    }
+
+    .photo-wrap {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #d9e2ec;
+      box-shadow: 0 18px 34px rgba(21, 46, 72, 0.18);
+      background: #d6e0eb;
+      min-height: 280px;
+    }
+
+    .photo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .info-card {
+      border-radius: 12px;
+      border: 1px solid #d8e0ea;
+      padding: 12px;
+      background: #f9fbff;
+      min-height: 90px;
+    }
+
+    .info-card .k {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #5f738b;
+      margin-bottom: 5px;
+      font-weight: 700;
+    }
+
+    .info-card .v {
+      font-size: 0.95rem;
+      color: #17334f;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .section {
+      margin-top: 26px;
+      animation: rise 0.75s ease both;
+    }
+
+    .section h2 {
+      margin: 0 0 14px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.7rem, 2.8vw, 2.25rem);
+      color: var(--brand);
+      letter-spacing: 0.01em;
+    }
+
+    .section p {
+      color: var(--ink-soft);
+      margin-top: 0;
+    }
+
+    .pub-list,
+    .timeline {
+      display: grid;
+      gap: 12px;
+    }
+
+    .pub-item,
+    .timeline-item {
+      padding: 14px 16px;
+      border: 1px solid #d6e0ea;
+      border-radius: 14px;
+      background: #fdfefe;
+    }
+
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .timeline-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .pub-item strong {
+      color: #102d49;
+      font-size: 1.01rem;
+    }
+
+    .pub-item a {
+      color: #0d4f81;
+      word-break: break-word;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .pub-item a:hover {
+      text-decoration: underline;
+    }
+
+    .meta {
+      color: #607287;
+      font-size: 0.9rem;
+      margin-top: 6px;
+    }
+
+    .timeline-item .when {
+      color: #4d6885;
+      font-weight: 700;
+      font-size: 0.88rem;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item h3 {
+      margin: 0 0 4px;
+      color: #122f4c;
+      font-size: 1.03rem;
+    }
+
+    .timeline-item p {
+      margin: 0;
+      color: #5a6e84;
+      font-size: 0.95rem;
+    }
+
+    .uni-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid #c8d7e6;
+      background: #ffffff;
+      object-fit: contain;
+      padding: 6px;
+      flex-shrink: 0;
+    }
+
+    .logo-fallback {
+      display: none;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 1px solid #c8d7e6;
+      background: #edf4fb;
+      color: #1a4368;
+      font-size: 0.85rem;
+      font-weight: 800;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      color: #123252;
+      font-weight: 700;
+      border: 1px solid #c8d8e7;
+      background: #f7fbff;
+      border-radius: 10px;
+      padding: 8px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s ease;
+    }
+
+    .contact-links a:hover {
+      border-color: #9cb6cf;
+      background: #eef6ff;
+    }
+
+    .contact-links svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #5f7083;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #c9d4e1 20%, #c9d4e1 80%, transparent);
+      margin: 26px 0 2px;
+    }
+
+    @media (max-width: 950px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-wrap {
+        min-height: 360px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        padding: 14px 12px 44px;
+      }
+
+      .panel {
+        padding: 18px;
+        border-radius: 18px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .links {
+        gap: 6px;
+      }
+
+      .links a {
+        padding: 6px 10px;
+        font-size: 0.88rem;
+      }
+
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <nav class="nav" aria-label="Primary">
+      <div class="nav-wrap">
+        <a class="brand" href="#top">GUAN Shaowei</a>
+        <div class="links">
+          <a href="#about">About</a>
+          <a href="#education">Education</a>
+          <a href="#publications">Publications</a>
+          <a href="#experience">Experience</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="hero" id="top">
+      <section class="panel intro" id="about">
+        <h1>GUAN Shaowei (Frank)</h1>
+        <p class="title">PhD Student in AI for Healthcare, The Hong Kong Polytechnic University</p>
+        <p class="lead">
+          Bridging engineering and health sciences through trustworthy medical AI. My current PhD work focuses on medical LLMs, privacy-aware RAG systems, and robust benchmarking for clinical question answering.
+        </p>
+        <p class="lead">
+          I am also an Activity Tutor in the student halls of PolyU (Hung Hom and Ho Man Tin), where I engage with students to develop their leadership skills, foster a sense of community, and provide guidance and supervision for student activities and events.
+        </p>
+        <h3>
+            Open to collaboration in medical AI, healthcare LLMs/NLP, and privacy-preserving LLM systems.
+        </h3>
+        <div class="tags" aria-label="Research interests">
+          <span class="tag">Medical LLMs</span>
+          <span class="tag">RAG for Healthcare</span>
+          <span class="tag">Data Privacy</span>
+          <span class="tag">LLM Evaluation</span>
+          <span class="tag">Clinical NLP</span>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="CV_GUAN_Shaowei.docx">Download CV</a>
+          <a class="btn btn-secondary" href="#publications">View Publications</a>
+        </div>
+
+
+      </section>
+
+      <aside class="profile">
+        <div class="photo-wrap">
+          <img src="photo.jpg" alt="Portrait of GUAN Shaowei">
+        </div>
+        <div class="panel info-grid" aria-label="Quick information">
+          <div class="info-card">
+            <div class="k">Location</div>
+            <div class="v">Hong Kong SAR</div>
+          </div>
+          <div class="info-card">
+            <div class="k">Email</div>
+            <div class="v">shaowei-frank.guan@connect.polyu.hk</div>
+          </div>
+          <div class="info-card">
+            <div class="k">Phone</div>
+            <div class="v">+852 9575 2722</div>
+          </div>
+          <div class="info-card">
+            <div class="k">Focus</div>
+            <div class="v">AI + Healthcare</div>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <section class="section panel" id="education">
+      <h2>Education</h2>
+      <div class="timeline">
+        <article class="timeline-item">
+          <img class="uni-logo" src="polyu.png" alt="PolyU logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <span class="logo-fallback">PolyU</span>
+          <div class="timeline-body">
+            <div class="when">09/2025 - 06/2029</div>
+            <h3>The Hong Kong Polytechnic University</h3>
+            <h3>PhD in AI for Healthcare</h3>
+            <p>Supervisors: Prof. Vivian Hui (Chief), Prof. Harry Qin (Co-supervisor)</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <img class="uni-logo" src="polyu.png" alt="PolyU logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <span class="logo-fallback">PolyU</span>
+          <div class="timeline-body">
+            <div class="when">09/2021 - 06/2025</div>
+            <h3>The Hong Kong Polytechnic University</h3>
+            <h3>BSc (Hons) in Internet and Multimedia Technologies, Minor in Applied Mathematics</h3>
+            <p>First Class Honours, Minor GPA 3.8</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <img class="uni-logo" src="ntu.jpg" alt="National Taiwan University seal" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <span class="logo-fallback">NTU</span>
+          <div class="timeline-body">
+            <div class="when">02/2024 - 06/2024</div>
+            <h3>National Taiwan University</h3>
+            <h3>Visiting Student</h3>
+            <p>Department of Computer Science and Information Engineering, CGPA 3.72/4.3</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel" id="publications">
+      <h2>Selected Publications</h2>
+      <div class="pub-list">
+        <article class="pub-item">
+          <strong>Classifying the Information Needs of Survivors of Domestic Violence in Online Health Communities Using Large Language Models</strong>
+          <div class="meta">Journal of Medical Internet Research, 2025 (JCR Q1)</div>
+          <a href="https://doi.org/10.2196/65397">https://doi.org/10.2196/65397</a>
+        </article>
+        <article class="pub-item">
+          <strong>A One-class Variational Autoencoder for Smart Contract Vulnerability Detection</strong>
+          <div class="meta">International Journal of Information Security, 2025 (JCR Q2)</div>
+          <a href="https://doi.org/10.1007/s10207-025-01102-3">https://doi.org/10.1007/s10207-025-01102-3</a>
+        </article>
+        <article class="pub-item">
+          <strong>Development and Validation of a Large Language Model-Powered Chatbot for Neurosurgery</strong>
+          <div class="meta">Journal of Medical Internet Research, 2025 (JCR Q1)</div>
+          <a href="https://doi.org/10.2196/74299">https://doi.org/10.2196/74299</a>
+        </article>
+        <article class="pub-item">
+          <strong>Privacy Challenges and Solutions in RAG-Enhanced LLMs for Healthcare Chatbots</strong>
+          <div class="meta">arXiv preprint, under review for npj Digital Medicine</div>
+        </article>
+        <article class="pub-item">
+          <strong>MedPriv-Bench: Benchmarking the Privacy-Utility Trade-off of LLMs in Medical Open-End QA</strong>
+          <div class="meta">arXiv preprint, submitted to ARR (May 2026), planned for EMNLP 2026</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel" id="experience">
+      <h2>Research Experience</h2>
+      <div class="timeline">
+        <article class="timeline-item">
+          <img class="uni-logo" src="polyu.png" alt="PolyU logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <span class="logo-fallback">PolyU</span>
+          <div class="timeline-body">
+            <div class="when">09/2025 - Present</div>
+            <h3>The Hong Kong Polytechnic University</h3>
+            <h3>PhD Student, School of Nursing</h3>
+            <p>Building privacy-aware benchmarks and evaluation frameworks for medical LLMs, including multi-agent dataset construction and utility-risk trade-off analysis.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <img class="uni-logo" src="polyu.png" alt="PolyU logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <span class="logo-fallback">PolyU</span>
+          <div class="timeline-body">
+            <div class="when">09/2023 - 05/2025</div>
+            <h3>The Hong Kong Polytechnic University</h3>
+            <h3>Research Assistant (Part-time), School of Nursing</h3>
+            <p>Developed LLM pipelines for domestic violence support need classification, neurosurgery RAG chatbot validation, and automated feedback systems in nursing education.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <img class="uni-logo" src="polyu.png" alt="PolyU logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
+          <span class="logo-fallback">PolyU</span>
+          <div class="timeline-body">
+            <div class="when">06/2023 - 08/2024</div>
+            <h3>The Hong Kong Polytechnic University</h3>
+            <h3>URIS Researcher, Department of Electronic and Information Engineering</h3>
+            <p>Designed an LSTM-VAE based semi-supervised method for smart contract vulnerability detection, achieving strong F1 performance over conventional baselines.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel" id="contact">
+      <h2>Contact & Links</h2>
+      <p>Open to collaboration in medical AI, healthcare NLP, and privacy-preserving LLM systems.</p>
+      <div class="contact-links">
+        <a href="mailto:shaowei-frank.guan@connect.polyu.hk" aria-label="Email">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 5h20v14H2V5zm2.9 1.8L12 12.1l7.1-5.3H4.9zm15.1 10.4V9.2L12 15l-8-5.8v8h16z"/></svg>
+          Email
+        </a>
+        <a href="https://scholar.google.com/citations?hl=zh-CN&user=d7PanhMAAAAJ" aria-label="Google Scholar">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3L1 9l11 6 9-4.9V17h2V9L12 3zm-6 9.3V16c0 2.3 3 4 6 4s6-1.7 6-4v-3.7l-6 3.2-6-3.2z"/></svg>
+          Google Scholar
+        </a>
+        <a href="https://orcid.org/0009-0009-4434-1337" aria-label="ORCID">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-5.1 4.8h2v10.4h-2V6.8zm1-1.7a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4zm3.1 1.7h5.2a3.4 3.4 0 010 6.8H13v3.6h-2V6.8zm2 1.9v3h3a1.5 1.5 0 100-3h-3z"/></svg>
+          ORCID
+        </a>
+        <a href="https://www.linkedin.com/in/shaowei-guan" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 102.5 6a2.5 2.5 0 002.48-2.5zM3 8h4v13H3V8zm7 0h3.8v1.8h.1a4.2 4.2 0 013.8-2.1c4.1 0 4.9 2.7 4.9 6.2V21h-4v-6.4c0-1.5 0-3.5-2.1-3.5s-2.5 1.7-2.5 3.4V21h-4V8z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://github.com/SpidermanGUAN" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2.2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.9 1.2 1.9 1.2 1.1 1.9 2.9 1.3 3.6 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.6-1.4-5.6-6.2 0-1.4.5-2.5 1.2-3.3-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.4 1.2a11.7 11.7 0 016.1 0c2.3-1.5 3.3-1.2 3.3-1.2.7 1.6.3 2.9.2 3.2.8.9 1.2 2 1.2 3.3 0 4.8-2.9 5.9-5.7 6.2.5.4.8 1.1.8 2.3v3.4c0 .3.2.7.8.6A12 12 0 0012 .5z"/></svg>
+          GitHub
+        </a>
+      </div>
+      <div class="divider"></div>
+      <footer>
+        Last updated: May 26, 2026 | Built for GitHub Pages
+      </footer>
+    </section>
+  </div>
+</body>
+</html>
