@@ -247,6 +247,7 @@
       color: #17334f;
       font-weight: 700;
       line-height: 1.4;
+      overflow-wrap: anywhere;
     }
 
     .section {
@@ -292,7 +293,8 @@
       min-width: 0;
     }
 
-    .pub-item strong {
+    .pub-item h3 {
+      margin: 0;
       color: #102d49;
       font-size: 1.01rem;
     }
@@ -462,6 +464,7 @@
           <a href="#education">Education</a>
           <a href="#publications">Publications</a>
           <a href="#experience">Experience</a>
+          <a href="#service">Service</a>
           <a href="#contact">Contact</a>
         </div>
       </div>
@@ -472,10 +475,10 @@
         <h1>GUAN Shaowei (Frank)</h1>
         <p class="title">PhD Student in AI for Healthcare, The Hong Kong Polytechnic University</p>
         <p class="lead">
-          Bridging engineering and health sciences through trustworthy medical AI. My current PhD work focuses on medical LLMs, privacy-aware RAG systems, and robust benchmarking for clinical question answering.
+          I develop and evaluate large language models for healthcare. My PhD research focuses on how retrieval-augmented generation (RAG) affects both the privacy and usefulness of medical answers.
         </p>
         <p class="lead">
-          I am also an Activity Tutor in the student halls of PolyU (Hung Hom and Ho Man Tin), where I engage with students to develop their leadership skills, foster a sense of community, and provide guidance and supervision for student activities and events.
+          I am also a Student Halls Activity Tutor at PolyU, where I advise student organizations and supervise events at the Hung Hom and Ho Man Tin halls.
         </p>
         <h3>
             Open to collaboration in medical AI, healthcare LLMs/NLP, and privacy-preserving LLM systems.
@@ -488,7 +491,7 @@
           <span class="tag">Clinical NLP</span>
         </div>
         <div class="actions">
-          <a class="btn btn-primary" href="CV_GUAN_Shaowei.docx">Download CV</a>
+          <a class="btn btn-primary" href="CV_GUAN_Shaowei.pdf" download>Download CV (PDF)</a>
           <a class="btn btn-secondary" href="#publications">View Publications</a>
         </div>
 
@@ -527,9 +530,9 @@
           <img class="uni-logo" src="polyu.png" alt="PolyU logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';">
           <span class="logo-fallback">PolyU</span>
           <div class="timeline-body">
-            <div class="when">09/2025 - 06/2029</div>
+            <div class="when">09/2025 - Present (expected 06/2029)</div>
             <h3>The Hong Kong Polytechnic University</h3>
-            <h3>PhD in AI for Healthcare</h3>
+            <h3>PhD in AI for Healthcare, School of Nursing</h3>
             <p>Supervisors: Prof. Vivian Hui (Chief), Prof. Harry Qin (Co-supervisor)</p>
           </div>
         </article>
@@ -557,30 +560,45 @@
     </section>
 
     <section class="section panel" id="publications">
-      <h2>Selected Publications</h2>
+      <h2>Publications &amp; Conference Presentations</h2>
       <div class="pub-list">
         <article class="pub-item">
-          <strong>Classifying the Information Needs of Survivors of Domestic Violence in Online Health Communities Using Large Language Models</strong>
-          <div class="meta">Journal of Medical Internet Research, 2025 (JCR Q1)</div>
-          <a href="https://doi.org/10.2196/65397">https://doi.org/10.2196/65397</a>
+          <h3>MedPriv-Bench: Benchmarking the Privacy-Utility Trade-off of Large Language Models in Medical Open-Ended Question Answering</h3>
+          <div class="meta">EMNLP 2026 (main conference), Budapest, Hungary</div>
+          <a href="https://aclanthology.org/2026.emnlp-main.1157/">ACL Anthology</a>
         </article>
         <article class="pub-item">
-          <strong>A One-class Variational Autoencoder for Smart Contract Vulnerability Detection</strong>
-          <div class="meta">International Journal of Information Security, 2025 (JCR Q2)</div>
-          <a href="https://doi.org/10.1007/s10207-025-01102-3">https://doi.org/10.1007/s10207-025-01102-3</a>
+          <h3>Domain-Specific Multi-Agent Collaboration for Domestic Violence Triage and Actionable Safety Support: A Benchmark and System Evaluation</h3>
+          <div class="meta">AMIA 2026 Annual Symposium, poster presentation, Dallas, TX</div>
         </article>
         <article class="pub-item">
-          <strong>Development and Validation of a Large Language Model-Powered Chatbot for Neurosurgery</strong>
-          <div class="meta">Journal of Medical Internet Research, 2025 (JCR Q1)</div>
-          <a href="https://doi.org/10.2196/74299">https://doi.org/10.2196/74299</a>
+          <h3>Development and Quasi-Experimental Evaluation of a Large Language Model-Based Automated Feedback System for Nursing Innovation Pitches</h3>
+          <div class="meta">Nurse Education in Practice, 2026, article 104672</div>
+          <a href="https://doi.org/10.1016/j.nepr.2025.104672">Journal article</a>
         </article>
         <article class="pub-item">
-          <strong>Privacy Challenges and Solutions in RAG-Enhanced LLMs for Healthcare Chatbots</strong>
-          <div class="meta">arXiv preprint, under review for npj Digital Medicine</div>
+          <h3>Classifying the Information Needs of Survivors of Domestic Violence in Online Health Communities Using Large Language Models</h3>
+          <div class="meta">Journal of Medical Internet Research, 2025</div>
+          <a href="https://doi.org/10.2196/65397">Journal article</a>
         </article>
         <article class="pub-item">
-          <strong>MedPriv-Bench: Benchmarking the Privacy-Utility Trade-off of LLMs in Medical Open-End QA</strong>
-          <div class="meta">arXiv preprint, submitted to ARR (May 2026), planned for EMNLP 2026</div>
+          <h3>Development and Validation of a Large Language Model-Powered Chatbot for Neurosurgery</h3>
+          <div class="meta">Journal of Medical Internet Research, 2025 &middot; Co-first author</div>
+          <a href="https://doi.org/10.2196/74299">Journal article</a>
+        </article>
+        <article class="pub-item">
+          <h3>A One-Class Variational Autoencoder for Smart Contract Vulnerability Detection</h3>
+          <div class="meta">International Journal of Information Security, 2025</div>
+          <a href="https://doi.org/10.1007/s10207-025-01102-3">Journal article</a>
+        </article>
+        <article class="pub-item">
+          <h3>Privacy Challenges and Solutions in Retrieval-Augmented Generation-Enhanced LLMs for Healthcare Chatbots: A Review of Applications, Risks, and Future Directions</h3>
+          <div class="meta">arXiv preprint, 2025</div>
+          <a href="https://arxiv.org/abs/2511.11347">arXiv preprint</a>
+        </article>
+        <article class="pub-item">
+          <h3>Predicting the Information Needs for Domestic Violence Survivors Based on the Fine-tuned Large Language Model</h3>
+          <div class="meta">AMIA 2024 Annual Symposium, poster presentation, San Francisco, CA</div>
         </article>
       </div>
     </section>
@@ -595,7 +613,7 @@
             <div class="when">09/2025 - Present</div>
             <h3>The Hong Kong Polytechnic University</h3>
             <h3>PhD Student, School of Nursing</h3>
-            <p>Building privacy-aware benchmarks and evaluation frameworks for medical LLMs, including multi-agent dataset construction and utility-risk trade-off analysis.</p>
+            <p>Developed MedPriv-Bench to measure the trade-off between answer usefulness and privacy in open-ended medical question answering. Built the benchmark with a multi-agent pipeline and evaluated nine large language models.</p>
           </div>
         </article>
         <article class="timeline-item">
@@ -616,6 +634,33 @@
             <h3>The Hong Kong Polytechnic University</h3>
             <h3>URIS Researcher, Department of Electronic and Information Engineering</h3>
             <p>Designed an LSTM-VAE based semi-supervised method for smart contract vulnerability detection, achieving strong F1 performance over conventional baselines.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section panel" id="service">
+      <h2>University Service &amp; Leadership</h2>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-body">
+            <div class="when">02/2026 - Present</div>
+            <h3>Student Halls Activity Tutor</h3>
+            <p>Student Affairs Office, PolyU. Advise the Hall Dance Team, Hall Music Collective, and Explore Hong Kong Community. Review activity proposals and provide on-site support.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-body">
+            <div class="when">01/2023 - 06/2025</div>
+            <h3>Student Assistant &amp; Group Leader</h3>
+            <p>Non-local Student Team, Student Affairs Office, PolyU. Helped organize orientations and cultural events, and supported non-local students.</p>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-body">
+            <div class="when">09/2023 - 12/2023</div>
+            <h3>Millennium Fellow, Class of 2023</h3>
+            <p>United Nations Academic Impact and Millennium Campus Network. Led a team that interviewed students about climate change and presented the findings.</p>
           </div>
         </article>
       </div>
@@ -648,7 +693,7 @@
       </div>
       <div class="divider"></div>
       <footer>
-        Last updated: May 26, 2026 | Built for GitHub Pages
+        Last updated <time datetime="2026-11-23">November 23, 2026</time>
       </footer>
     </section>
   </div>
